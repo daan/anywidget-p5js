@@ -8,8 +8,8 @@ pip install "anywidget"
 ```
 
 # minimal example
-[<https://colab.research.google.com/assets/colab-badge.svg>](https://colab.research.google.com/github/daan/anywidget-p5js/blob/44759e1e859f51b259fb5c766118f70c18bfec1b/minimal-example/minimal-example.ipynb")
 
+[![Foo](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/daan/anywidget-p5js/blob/44759e1e859f51b259fb5c766118f70c18bfec1b/minimal-example/minimal-example.ipynb")
 
 ```
 import anywidget
