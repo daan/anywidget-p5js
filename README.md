@@ -4,8 +4,10 @@ A few examples of using [p5.js](https://p5js.org/) in [Jupyter Notebooks](https:
 
 
 ```
-pip install "anywidget[dev]"
+pip install "anywidget"
 ```
+
+# minimal example
 
 ```
 import anywidget
