@@ -16,7 +16,7 @@ function render({ model, el }) {
             x = p.width / 2;
             y = p.height / 2;
             p5canvas.fill(255);
-        };
+        }
         p.draw = () => {
             p.background('#eeffff');
             p.translate(x, y);
