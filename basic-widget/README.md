@@ -2,7 +2,8 @@
 
 Basic Widget with in the notebook or in a panel dashboard.
 
-[![view on colab](https://colab.research.google.com/github/daan/anywidget-p5js/blob/main/basic-widget/basic-widget.ipynb)
+
+[![view on colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/daan/anywidget-p5js/blob/main/basic-widget/basic-widget.ipynb)
 
 
 ```sh
