@@ -4,3 +4,6 @@ Annotating a video with p5.js content. The video runs in the browser using the [
 
 
 
+[![view on colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/daan/anywidget-p5js/blob/main/video-widget/video-widget.ipynb)
+
+
