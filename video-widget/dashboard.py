@@ -1,10 +1,13 @@
 import panel as pn
+
+pn.extension()
+
 import anywidget
 
 import pathlib
 import traitlets
 import ipywidgets
-from ipywidgets import FloatSlider
+from ipywidgets import FloatSlider, Layout
 
 
 class P5VideoWidget(anywidget.AnyWidget):
@@ -20,7 +23,7 @@ class P5VideoWidget(anywidget.AnyWidget):
 
 # video widget
 
-p5vw = P5VideoWidget()
+p5vw = P5VideoWidget(layout=Layout(width="100%", height="100%"))
 
 
 def duration_change(change):
@@ -54,7 +57,7 @@ button.param.watch(start_stop, "clicks")
 # slider
 
 slider = pn.widgets.FloatSlider(
-    name="time", start=0, end=800, step=0.01, height=200, width=800
+    name="time", start=0, end=800, step=0.01, height=200, sizing_mode="stretch_width"
 )
 
 
@@ -65,5 +68,7 @@ def update_time_from_slider(event):
 slider.param.watch(update_time_from_slider, "value")
 
 
-c = pn.Column(p5vw, pn.Row(button, slider))
-pn.panel(c).servable()
+gspec = pn.GridSpec(sizing_mode="stretch_both")
+gspec[0, :3] = p5vw
+gspec[1, :3] = pn.Row(button, slider)
+pn.panel(gspec).servable()

@@ -99,6 +99,7 @@ function render({ model, el }) {
 
     let sketch = new p5((p) => {
         p.setup = () => {
+            // let p5canvas = p.createCanvas(video.scrollWidth, video.scrollHeight, canvas);
             let p5canvas = p.createCanvas(800, 400, canvas);
         };
         p.draw = () => {
