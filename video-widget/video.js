@@ -36,15 +36,14 @@ function render({ model, el }) {
         isPlaying = false;
     });
 
-
-    // TODO: happens all the time, use another event. 
     video.addEventListener("canplay", (event) => {
         videoLoaded = true;
         videoWidth = video.videoWidth;
         videoHeight = video.videoHeight;
         videoDuration = video.duration;
+        calculateAspect();
         model.set("duration", videoDuration);
-        console.log("duration");
+        model.save_changes();
     });
 
     model.on("change:time", () => {
@@ -70,21 +69,13 @@ function render({ model, el }) {
     let vtop = 0;
     let vleft = 0;
     let vscale = 1;
-    let videoAspect = 1;
-    let elementAspect = 1;
-    let elementWidth = 0;
-    let elementHeight = 0;
 
-    // respond to size changes
-    // https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Determining_the_dimensions_of_elements
-    const ro = new ResizeObserver(entries => {
-        console.log(video.scrollWidth, "wh", video.scrollHeight);
-        sketch.resizeCanvas(video.scrollWidth, video.scrollHeight);
-
-        elementWidth = video.scrollWidth;
-        elementHeight = video.scrollHeight;
-        videoAspect = videoWidth / videoHeight;
-        elementAspect = elementWidth / elementHeight;
+    function calculateAspect() {
+        let elementWidth = video.scrollWidth;
+        let elementHeight = video.scrollHeight;
+        let videoAspect = videoWidth / videoHeight;
+        let elementAspect = elementWidth / elementHeight;
+        sketch.resizeCanvas(elementWidth, elementHeight);
 
         vtop = 0;
         vleft = 0;
@@ -97,8 +88,12 @@ function render({ model, el }) {
             vleft = (elementWidth - (elementHeight * videoAspect)) / 2;
             vscale = elementHeight / videoHeight;
         }
-        console.log(vleft, vtop, vscale);
-    });
+    }
+
+
+    // respond to size changes
+    // https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Determining_the_dimensions_of_elements
+    const ro = new ResizeObserver(entries => { calculateAspect(); });
     ro.observe(video);
 
 
