@@ -1,12 +1,12 @@
 A few examples of using [p5.js](https://p5js.org/) in [Jupyter Notebooks](https://jupyter.org/) or in [Holoviz Panel](https://panel.holoviz.org/) using [anywidget](https://anywidget.dev/).
 
-# Installation
+## Installation
 
 ```
-pip install "anywidget"
+pip install anywidget
 ```
 
-# Usage
+## Usage
 
 [![view on colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/daan/anywidget-p5js/minimal-example/minimal-example.ipynb)
 
@@ -53,6 +53,6 @@ class CounterWidget(anywidget.AnyWidget):
 CounterWidget(value=10)
 ```
 
-# License
+## License
 
 This project is licensed under the terms of the MIT license.

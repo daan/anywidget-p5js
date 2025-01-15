@@ -20,7 +20,7 @@ function render({ model, el }) {
     video.setAttribute("type", "video/mp4");
     video.setAttribute("src", "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4");
     video.setAttribute("nocontrols", true);
-    video.setAttribute("autoplay", true);
+    video.setAttribute("muted", true);
     video.addEventListener("timeupdate", () => {
         if (isPlaying) {
             _stop_event = true;
@@ -44,12 +44,20 @@ function render({ model, el }) {
         videoHeight = video.videoHeight;
         videoDuration = video.duration;
         model.set("duration", videoDuration);
-        //  console.log("duration");
+        console.log("duration");
     });
 
     model.on("change:time", () => {
         if (_stop_event) { return }
         video.currentTime = model.get("time");
+    });
+
+    model.on("change:play", () => {
+        if (model.get("play")) {
+            video.play();
+        } else {
+            video.pause();
+        }
     });
 
 
@@ -126,17 +134,9 @@ function render({ model, el }) {
         }
 
         p.mousePressed = () => {
+            if (p.mouseX < 0 || p.mouseY < 0 || p.mouseX > p.width || p.mouseY > p.height) return;
             x = p.mouseX;
             y = p.mouseY;
-            if (x < 0 || y < 0 || x > p.width || y > p.height) return;
-
-            // console.log(p.width, p.height, x,y);
-
-            if (isPlaying) {
-                video.pause();
-            } else {
-                video.play();
-            }
         }
     });
 }
